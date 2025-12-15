@@ -4,4 +4,5 @@ dj-database-url>=3,<4
 whitenoise>=6,<7
 
 # Uncomment to use a Postgres database.
-#psycopg[binary]
+psycopg[c]; sys_platform == "linux"
+psycopg[binary]; sys_platform != "linux"
