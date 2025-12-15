@@ -51,7 +51,7 @@ DEBUG = os.environ.get("ENVIRONMENT") == "development"
 # https://devcenter.heroku.com/articles/heroku-ci#immutable-environment-variables
 IS_HEROKU_APP = "DYNO" in os.environ and "CI" not in os.environ
 
-if IS_HEROKU_APP:
+if True:
     # On Heroku, it's safe to use a wildcard for `ALLOWED_HOSTS`, since the Heroku router performs
     # validation of the Host header in the incoming HTTP request. On other platforms you may need to
     # list the expected hostnames explicitly in production to prevent HTTP Host header attacks. See:
@@ -68,7 +68,7 @@ if IS_HEROKU_APP:
     #
     # For maximum security, consider enabling HTTP Strict Transport Security (HSTS) headers too:
     # https://docs.djangoproject.com/en/6.0/ref/middleware/#http-strict-transport-security
-    SECURE_SSL_REDIRECT = True
+    SECURE_SSL_REDIRECT = False
 else:
     ALLOWED_HOSTS = [".localhost", "127.0.0.1", "[::1]", "0.0.0.0", "[::]"]
 
@@ -133,7 +133,7 @@ WSGI_APPLICATION = "gettingstarted.wsgi.application"
 # Database
 # https://docs.djangoproject.com/en/6.0/ref/settings/#databases
 
-if IS_HEROKU_APP:
+if  True:
     # In production on Heroku the database configuration is derived from the `DATABASE_URL`
     # environment variable by the dj-database-url package. `DATABASE_URL` will be set
     # automatically by Heroku when a database addon is attached to your Heroku app. See:
@@ -144,7 +144,7 @@ if IS_HEROKU_APP:
             env="DATABASE_URL",
             conn_max_age=600,
             conn_health_checks=True,
-            ssl_require=True,
+            ssl_require=False,
         ),
     }
 else:
